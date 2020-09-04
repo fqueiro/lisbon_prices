@@ -14,8 +14,7 @@ def append_list_as_row(file_name, list_of_elem):
 
 x='idea'
 base_url = 'https://www.'+x+'lista.pt/comprar-casas/lisboa/'
-areas = ['','belem/','ajuda/','alcantara/','estrela/']
-#areas = ['','belem/','ajuda/','alcantara/','estrela/','campo-de-ourique/','misericordia/','santo-antonio/','santa-maria-maior/']
+areas = ['','belem/','ajuda/','alcantara/','estrela/','campo-de-ourique/','misericordia/','santo-antonio/','santa-maria-maior/']
 
 today = date.today()
 d1 = today.strftime("%d/%m/%Y")
@@ -26,6 +25,6 @@ for area in areas:
     price=re.findall('\d*[.]\d*',price[0])
     price.append(area)
     price.append(d1)
-    append_list_as_row('lisbon_prices2.csv',price)
+    append_list_as_row('lisbon_prices.csv',price)
     time.sleep(60)
 
