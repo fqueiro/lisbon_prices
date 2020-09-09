@@ -17,11 +17,17 @@ x='idea'
 base_url = 'https://www.'+x+'lista.pt/comprar-casas/lisboa/'
 areas = ['','belem/','ajuda/','alcantara/','estrela/','campo-de-ourique/','misericordia/','santo-antonio/','santa-maria-maior/']
 
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0',
+           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+           'Accept-Language': 'en-US,en;q=0.5',
+           'Connection': 'keep-alive'}
+
 today = date.today()
 d1 = today.strftime("%d/%m/%Y")
 for area in areas:
+    print(area)
     time.sleep(60+randrange(60))
-    req = Request(base_url+area, headers={'User-Agent': 'Mozilla/5.0'})
+    req = Request(base_url+area, headers=headers)
     f = urlopen(req).read().decode("utf-8")
     price=re.findall('Preço médio nesta zona \d*[.]\d* eur',f)
     price=re.findall('\d*[.]\d*',price[0])
