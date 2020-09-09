@@ -3,6 +3,7 @@ import re
 from csv import writer
 from datetime import date
 import time
+from random import randrange
 
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
@@ -19,6 +20,7 @@ areas = ['','belem/','ajuda/','alcantara/','estrela/','campo-de-ourique/','miser
 today = date.today()
 d1 = today.strftime("%d/%m/%Y")
 for area in areas:
+    time.sleep(60+randrange(60))
     req = Request(base_url+area, headers={'User-Agent': 'Mozilla/5.0'})
     f = urlopen(req).read().decode("utf-8")
     price=re.findall('Preço médio nesta zona \d*[.]\d* eur',f)
@@ -26,5 +28,4 @@ for area in areas:
     price.append(area)
     price.append(d1)
     append_list_as_row('lisbon_prices.csv',price)
-    time.sleep(60)
 
