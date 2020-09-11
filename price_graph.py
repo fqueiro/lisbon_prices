@@ -20,5 +20,5 @@ lgd = ax.legend(price_data['area'], prop={'size': 20}, loc='upper left', bbox_to
 plt.xticks(plticks)
 ax.tick_params(axis="both", which="both", bottom=False, top=False, left=False, right=False)
 sns.despine(right=True, top=True, bottom=True, left=True)
-#fig.autofmt_xdate()
+fig.autofmt_xdate()
 fig.savefig('docs/price_graph', bbox_extra_artists=(lgd,), bbox_inches='tight')
