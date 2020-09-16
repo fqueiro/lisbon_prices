@@ -6,6 +6,9 @@ price_data = pd.read_csv('lisbon_prices.csv',names=['price','area','date'])
 price_data.loc[price_data.area.isnull(),'area'] = 'lisboa'
 price_data['area'] = price_data['area'].str.replace(r'/$', '')
 
+# Normalize to one at first observed date
+price_data['price'] = price_data.groupby('area')['price'].transform(lambda x: x / x.iloc[0])
+
 plt.rc('xtick', labelsize=20)
 plt.rc('ytick', labelsize=20)
 
