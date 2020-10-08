@@ -13,8 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        #with:
+         # ref: ${{ github.head_ref }}
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
         with:
-          ref: ${{ github.head_ref }}
+          python-version: '3.6' 
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64' 
       - name: Configure pt_PT locale
         run: |
           apt-get update -y && apt-get install -y locales && echo "pt_PT.UTF-8 UTF-8" | tee -a /etc/locale.gen && locale-gen pt_PT.UTF-8
