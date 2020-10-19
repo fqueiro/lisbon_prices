@@ -1,8 +1,8 @@
 name: Extract data on Lisbon prices
 
 on:
-  schedule:
-    - cron: 0 8 * * *
+  #schedule:
+    #- cron: 0 8 * * *
   workflow_dispatch:
 
 jobs:
